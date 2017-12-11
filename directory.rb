@@ -22,9 +22,9 @@ def print_header
   puts "-------------"
 end
 
-def print(students, first_letter_of_name)
+def print(students)
   students.each do |student|
-    if first_letter_of_name.upcase == student[:name].chr
+    if student[:name].length < 12
       puts "#{student[:name]} (#{student[:cohort]} cohort)"
     end
   end
@@ -37,5 +37,5 @@ end
 students = input_students
 #nothing happens until we call the methods
 print_header
-print(students, "d")
+print(students)
 #print_footer(students)
