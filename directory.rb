@@ -4,7 +4,7 @@ def input_students
     months = [:january, :february, :march, :april, :may, :june, :july, :august, :september,
     :october, :november, :december]
     puts "Enter the name of the student, enter 'quit' to finish"
-    name = gets.chomp
+    name = gets.delete("\n")
       if name.empty?
         name = "Unknown"
       elsif name == "quit"
@@ -13,7 +13,7 @@ def input_students
         redo
       end
     puts "Enter their cohort or enter 'back' to amend their name"
-    cohort = gets.chomp.downcase.to_sym
+    cohort = gets.delete("\n").downcase.to_sym
       if cohort.empty?
         cohort = :Unknown
       elsif cohort == :back
