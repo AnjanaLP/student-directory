@@ -5,18 +5,14 @@ def input_students
     :october, :november, :december]
     puts "Enter the name of the student, enter 'quit' to finish"
     name = gets.delete("\n")
-      if name.empty?
-        name = "Unknown"
-      elsif name == "quit"
+      if name == "quit"
         break
       elsif name == "back"
         redo
       end
     puts "Enter their cohort or enter 'back' to amend their name"
     cohort = gets.delete("\n").downcase.to_sym
-      if cohort.empty?
-        cohort = :Unknown
-      elsif cohort == :back
+      if cohort == :back
         redo
       elsif !months.include?(cohort)
         puts "You entered an invalid month, please re-enter this student's info"
@@ -59,6 +55,8 @@ end
 
 students = input_students
 #nothing happens until we call the methods
+if students.count > 0
 print_header
 print(students)
 print_footer(students)
+end
