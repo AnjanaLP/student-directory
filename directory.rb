@@ -23,7 +23,11 @@ def input_students
         redo
       end
     students << {name: name, cohort: cohort}
-    puts "Now we have #{students.count} students"
+      if students.length == 1
+        puts "Now we have #{students.count} student"
+      else
+        puts "Now we have #{students.count} students"
+      end
   end
   students
 end
