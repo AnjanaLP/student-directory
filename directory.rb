@@ -34,10 +34,18 @@ def print_header
 end
 
 def print(students)
-  i = 0
-  while i < students.length
-    puts "#{students[i][:name]} (#{students[i][:cohort]} cohort)"
-    i += 1
+  sorted_by_cohort = {}
+  students.each do |student|
+      cohort = student[:cohort]
+      name = student[:name]
+      if sorted_by_cohort[cohort] == nil
+         sorted_by_cohort[cohort] = []
+      end
+      sorted_by_cohort[cohort] << name.capitalize
+  end
+
+  sorted_by_cohort.each do |month, names|
+    puts "#{month.capitalize}: #{names.join(", ")}"
   end
 end
 
