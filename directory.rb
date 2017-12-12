@@ -1,38 +1,48 @@
 def input_students
-  puts "Please enter the names of the students"
-  puts "To finish, just hit return twice"
-  # create an empty array
   students = []
-  # get the first name
-  name = gets.chomp
-  # while the name is not empty, repeat this code
-  while !name.empty? do
-    # add the student hash to the array
-    students << {name: name, cohort: :november}
-    puts "Now we have #{students.count} students"
-    # get another name from the user
-    puts "Please enter the name of your next student"
+  while true do
+    months = [:january, :february, :march, :april, :may, :june, :july, :august, :september,
+    :october, :november, :december]
+    puts "Enter the name of the student, enter 'quit' to finish"
     name = gets.chomp
+      if name.empty?
+        name = "Unknown"
+      elsif name == "quit"
+        break
+      elsif name == "back"
+        redo
+      end
+    puts "Enter their cohort or enter 'back' to amend their name"
+    cohort = gets.chomp.downcase.to_sym
+      if cohort.empty?
+        cohort = :Unknown
+      elsif cohort == :back
+        redo
+      elsif !months.include?(cohort)
+        puts "You entered an invalid month, please re-enter this student's info"
+        redo
+      end
+    students << {name: name, cohort: cohort}
+    puts "Now we have #{students.count} students"
   end
-  # return the array of students
   students
 end
 
 def print_header
-  puts "The students of Villains Academy".center(50)
-  puts "-------------".center(50)
+  puts "The students of Villains Academy"
+  puts "-------------"
 end
 
 def print(students)
   i = 0
   while i < students.length
-    puts "#{students[i][:name]} (#{students[i][:cohort]} cohort)".center(50)
+    puts "#{students[i][:name]} (#{students[i][:cohort]} cohort)"
     i += 1
   end
 end
 
 def print_footer(students)
-  puts "Overall, we have #{students.count} great students".center(50)
+  puts "Overall, we have #{students.count} great students"
 end
 
 students = input_students
