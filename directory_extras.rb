@@ -39,6 +39,7 @@ def input_students
     # get another name from the user
     name = STDIN.gets.chomp
   end
+  puts "Student input successful"
 end
 
 def show_students
@@ -70,6 +71,7 @@ def save_students
     file.puts csv_line
   end
   file.close
+  puts "Your input has been saved."
 end
 
 def load_students(filename = "students.csv")
