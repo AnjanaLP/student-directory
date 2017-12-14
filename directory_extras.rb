@@ -17,18 +17,12 @@ end
 
 def process(selection)
   case selection
-  when "1"
-    input_students
-  when "2"
-    show_students
-  when "3"
-    save_students
-  when "4"
-    load_students
-  when "9"
-    exit # this will cause the program to terminate
-  else
-    puts "I don't know what you meant, try again"
+    when "1" then input_students
+    when "2" then show_students
+    when "3" then save_students
+    when "4" then load_students
+    when "9" then exit # this will cause the program to terminate
+    else puts "I don't know what you meant, try again"
   end
 end
 
@@ -59,9 +53,7 @@ def print_header
 end
 
 def print_student_list
-  @students.each do |student|
-    puts "#{student[:name]} (#{student[:cohort]} cohort)"
-  end
+  @students.each { |student| puts "#{student[:name]} (#{student[:cohort]} cohort)" }
 end
 
 def print_footer
@@ -91,7 +83,7 @@ end
 
 def try_load_students
   filename = ARGV.first # first argument from the command line
-  filename = "students.csv" if filename.nil? 
+  filename = "students.csv" if filename.nil?
   if File.exists?(filename) # if it exists
     load_students(filename)
      puts "Loaded #{@students.count} from #{filename}"
